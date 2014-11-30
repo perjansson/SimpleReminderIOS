@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		2E7D5A791A2B5E4A009F762B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A781A2B5E4A009F762B /* AppDelegate.swift */; };
 		2E7D5A7C1A2B5E4A009F762B /* SimpleReminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A7A1A2B5E4A009F762B /* SimpleReminder.xcdatamodeld */; };
-		2E7D5A7E1A2B5E4A009F762B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A7D1A2B5E4A009F762B /* ViewController.swift */; };
+		2E7D5A7E1A2B5E4A009F762B /* ReminderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A7D1A2B5E4A009F762B /* ReminderListViewController.swift */; };
 		2E7D5A811A2B5E4A009F762B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E7D5A7F1A2B5E4A009F762B /* Main.storyboard */; };
 		2E7D5A831A2B5E4A009F762B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7D5A821A2B5E4A009F762B /* Images.xcassets */; };
 		2E7D5A861A2B5E4A009F762B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7D5A841A2B5E4A009F762B /* LaunchScreen.xib */; };
 		2E7D5A921A2B5E4A009F762B /* SimpleReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A911A2B5E4A009F762B /* SimpleReminderTests.swift */; };
+		2E7D5A9C1A2B7CF7009F762B /* ReminderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A9B1A2B7CF7009F762B /* ReminderDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +32,14 @@
 		2E7D5A771A2B5E4A009F762B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E7D5A781A2B5E4A009F762B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E7D5A7B1A2B5E4A009F762B /* SimpleReminder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleReminder.xcdatamodel; sourceTree = "<group>"; };
-		2E7D5A7D1A2B5E4A009F762B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2E7D5A7D1A2B5E4A009F762B /* ReminderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListViewController.swift; sourceTree = "<group>"; };
 		2E7D5A801A2B5E4A009F762B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2E7D5A821A2B5E4A009F762B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2E7D5A851A2B5E4A009F762B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2E7D5A8B1A2B5E4A009F762B /* SimpleReminderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleReminderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E7D5A901A2B5E4A009F762B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E7D5A911A2B5E4A009F762B /* SimpleReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleReminderTests.swift; sourceTree = "<group>"; };
+		2E7D5A9B1A2B7CF7009F762B /* ReminderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				2E7D5A781A2B5E4A009F762B /* AppDelegate.swift */,
-				2E7D5A7D1A2B5E4A009F762B /* ViewController.swift */,
+				2E7D5A7D1A2B5E4A009F762B /* ReminderListViewController.swift */,
+				2E7D5A9B1A2B7CF7009F762B /* ReminderDetailViewController.swift */,
 				2E7D5A7F1A2B5E4A009F762B /* Main.storyboard */,
 				2E7D5A821A2B5E4A009F762B /* Images.xcassets */,
 				2E7D5A841A2B5E4A009F762B /* LaunchScreen.xib */,
@@ -215,7 +218,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E7D5A7E1A2B5E4A009F762B /* ViewController.swift in Sources */,
+				2E7D5A7E1A2B5E4A009F762B /* ReminderListViewController.swift in Sources */,
+				2E7D5A9C1A2B7CF7009F762B /* ReminderDetailViewController.swift in Sources */,
 				2E7D5A791A2B5E4A009F762B /* AppDelegate.swift in Sources */,
 				2E7D5A7C1A2B5E4A009F762B /* SimpleReminder.xcdatamodeld in Sources */,
 			);
@@ -343,6 +347,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SimpleReminder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -353,6 +358,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SimpleReminder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -371,6 +377,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = SimpleReminderTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleReminder.app/SimpleReminder";
@@ -386,6 +393,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = SimpleReminderTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleReminder.app/SimpleReminder";
@@ -411,6 +419,7 @@
 				2E7D5A971A2B5E4A009F762B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2E7D5A981A2B5E4A009F762B /* Build configuration list for PBXNativeTarget "SimpleReminderTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +428,7 @@
 				2E7D5A9A1A2B5E4A009F762B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
