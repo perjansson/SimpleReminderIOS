@@ -11,6 +11,7 @@ import UIKit
 class ReminderListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
     var notes: [Note] = []
+    var note: Note? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.note = self.notes[indexPath.row]
         self.performSegueWithIdentifier("showDetailSegue", sender: self)
     }
     
@@ -49,6 +51,7 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var detailViewController = segue.destinationViewController as ReminderDetailViewController
         detailViewController.listViewController = self
+        detailViewController.note = self.note
     }
     
     @IBAction func unwindToList(segue: UIStoryboardSegue) {

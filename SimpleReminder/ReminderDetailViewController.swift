@@ -14,11 +14,14 @@ class ReminderDetailViewController : UIViewController {
     @IBOutlet weak var textView: UITextView!
     
     var listViewController = ReminderListViewController()
+    var note: Note? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         automaticallyAdjustsScrollViewInsets = false
+        
+        textView.text = note?.text
     }
     
     @IBAction func onSave(sender: AnyObject) {
