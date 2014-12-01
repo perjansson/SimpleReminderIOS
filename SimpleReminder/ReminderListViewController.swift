@@ -28,6 +28,11 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
         self.notes.append(Note(text: "Paint the bedroom"))
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.hidesBarsOnSwipe = true
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notes.count
     }
@@ -43,9 +48,9 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
         self.performSegueWithIdentifier("showDetailSegue", sender: self)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.hidesBarsOnSwipe = true
+    @IBAction func onNew(sender: AnyObject) {
+        self.note = nil
+        self.performSegueWithIdentifier("showDetailSegue", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

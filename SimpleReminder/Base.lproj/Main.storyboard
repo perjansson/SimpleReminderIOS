@@ -48,7 +48,7 @@
                     <navigationItem key="navigationItem" title="Notes" id="oV7-Tg-Our" userLabel="Reminder list">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="pPg-aB-SFB">
                             <connections>
-                                <segue destination="Toh-2D-Q9Z" kind="show" identifier="createSeque" id="WDh-5Z-bzN"/>
+                                <action selector="onNew:" destination="pat-Fi-DB3" id="E2G-jh-d4F"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -107,7 +107,4 @@
             <point key="canvasLocation" x="1578" y="78"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="oyH-Di-knX"/>
-    </inferredMetricsTieBreakers>
 </document>
