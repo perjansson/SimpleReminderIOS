@@ -10,22 +10,30 @@ import UIKit
 
 class ReminderListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var reminders = ["Buy milk", "Call Bob", "Walk the dog", "Push the code", "Make coffee", "Cut the lawn", "Paint the bedroom"];
+    var notes: [Note] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
+        self.notes.append(Note(text: "Buy milk"))
+        self.notes.append(Note(text: "Call Mike"))
+        self.notes.append(Note(text: "Walk the dog"))
+        self.notes.append(Note(text: "Push the code"))
+        self.notes.append(Note(text: "Make coffee"))
+        self.notes.append(Note(text: "Cut the lawn"))
+        self.notes.append(Note(text: "Paint the bedroom"))
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reminders.count
+        return notes.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        cell.textLabel!.text = self.reminders[indexPath.row]
+        cell.textLabel!.text = self.notes[indexPath.row].text
         return cell
     }
     

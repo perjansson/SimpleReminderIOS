@@ -17,12 +17,12 @@ class ReminderDetailViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         automaticallyAdjustsScrollViewInsets = false
     }
     
     @IBAction func onSave(sender: AnyObject) {
-        var text = textView.text
-        self.listViewController.reminders.append(text)
+        self.listViewController.notes.append(Note(text: textView.text))
         self.navigationController?.popViewControllerAnimated(true)
     }
     
