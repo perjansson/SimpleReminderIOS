@@ -11,9 +11,13 @@ import UIKit
 
 class ReminderDetailViewController : UIViewController {
     
+    @IBOutlet weak var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         automaticallyAdjustsScrollViewInsets = false
+        //textView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 20.0, 0.0)
     }
     
 }
