@@ -25,7 +25,7 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        cell.textLabel.text = self.reminders[indexPath.row]
+        cell.textLabel!.text = self.reminders[indexPath.row]
         return cell
     }
     

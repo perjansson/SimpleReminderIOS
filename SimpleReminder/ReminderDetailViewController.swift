@@ -15,9 +15,12 @@ class ReminderDetailViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         automaticallyAdjustsScrollViewInsets = false
-        //textView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 20.0, 0.0)
+    }
+    
+    @IBAction func onSave(sender: AnyObject) {
+        var text = textView.text
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
 }
