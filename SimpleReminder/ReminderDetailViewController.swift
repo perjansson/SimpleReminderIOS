@@ -30,6 +30,7 @@ class ReminderDetailViewController : UIViewController {
         } else {
             note?.text = textView.text
         }
+        self.listViewController.tableView.reloadData()
         self.navigationController?.popViewControllerAnimated(true)
     }
     

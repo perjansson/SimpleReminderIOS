@@ -88,7 +88,7 @@
                     <navigationItem key="navigationItem" title="Note" id="KTI-LL-k29">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Q9R-1q-DGn">
                             <connections>
-                                <segue destination="QTd-OM-wEp" kind="unwind" unwindAction="unwindToList:" id="QWY-6D-TBq"/>
+                                <segue destination="QTd-OM-wEp" kind="unwind" unwindAction="unwindToList:" id="3U3-hT-pLq"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="reU-rG-hgE">
