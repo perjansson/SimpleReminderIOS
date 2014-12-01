@@ -14,7 +14,7 @@ class ReminderDetailViewController : UIViewController {
     @IBOutlet weak var textView: UITextView!
     
     var listViewController = ReminderListViewController()
-    var note: Note? = nil
+    var note: Note?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,11 @@ class ReminderDetailViewController : UIViewController {
     }
     
     @IBAction func onSave(sender: AnyObject) {
-        self.listViewController.notes.append(Note(text: textView.text))
+        if note?.key == nil {
+            self.listViewController.notes.append(Note(text: textView.text))
+        } else {
+            note?.text = textView.text
+        }
         self.navigationController?.popViewControllerAnimated(true)
     }
     

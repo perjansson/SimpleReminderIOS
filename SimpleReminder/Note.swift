@@ -10,12 +10,16 @@ import Foundation
 
 class Note {
     
+    var key:String?
+    var text:String?
+    
     init(text: String) {
         self.key = NSUUID().UUIDString
         self.text = text
     }
     
-    var key: String
-    var text: String
+    func isNew() -> Bool {
+        return key == nil
+    }
     
 }
