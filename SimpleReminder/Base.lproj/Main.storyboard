@@ -21,7 +21,7 @@
             </objects>
             <point key="canvasLocation" x="188" y="78"/>
         </scene>
-        <!--Reminders-->
+        <!--Notes-->
         <scene sceneID="tLa-no-7zi">
             <objects>
                 <tableViewController id="pat-Fi-DB3" customClass="ReminderListViewController" customModule="SimpleReminder" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,7 +45,7 @@
                             <outlet property="delegate" destination="pat-Fi-DB3" id="10w-7x-8x5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Reminders" id="oV7-Tg-Our" userLabel="Reminder list">
+                    <navigationItem key="navigationItem" title="Notes" id="oV7-Tg-Our" userLabel="Reminder list">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="pPg-aB-SFB">
                             <connections>
                                 <segue destination="Toh-2D-Q9Z" kind="show" identifier="createSeque" id="WDh-5Z-bzN"/>
@@ -57,7 +57,7 @@
             </objects>
             <point key="canvasLocation" x="881" y="78"/>
         </scene>
-        <!--Reminder-->
+        <!--Note-->
         <scene sceneID="6U5-Mc-Il9">
             <objects>
                 <viewController id="Toh-2D-Q9Z" customClass="ReminderDetailViewController" customModule="SimpleReminder" customModuleProvider="target" sceneMemberID="viewController">
@@ -85,7 +85,7 @@
                             <constraint firstItem="W0j-gr-j7B" firstAttribute="top" secondItem="eW1-bz-rxz" secondAttribute="bottom" id="oPC-cF-SLH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Reminder" id="KTI-LL-k29">
+                    <navigationItem key="navigationItem" title="Note" id="KTI-LL-k29">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Q9R-1q-DGn">
                             <connections>
                                 <segue destination="QTd-OM-wEp" kind="unwind" unwindAction="unwindToList:" id="QWY-6D-TBq"/>
