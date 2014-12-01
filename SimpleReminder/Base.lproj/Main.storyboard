@@ -98,6 +98,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="saveButton" destination="reU-rG-hgE" id="iOy-hB-esX"/>
                         <outlet property="textView" destination="W0j-gr-j7B" id="5e3-ia-Pjt"/>
                     </connections>
                 </viewController>

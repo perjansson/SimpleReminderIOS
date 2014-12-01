@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 
-class ReminderDetailViewController : UIViewController {
+class ReminderDetailViewController : UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var listViewController = ReminderListViewController()
     var note: Note?
@@ -21,11 +22,17 @@ class ReminderDetailViewController : UIViewController {
         
         automaticallyAdjustsScrollViewInsets = false
         
+        textView.delegate = self
         textView.text = note?.text
+        saveButton.enabled = false
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        saveButton.enabled = textView.text != note?.text
     }
     
     @IBAction func onSave(sender: AnyObject) {
-        if note?.key == nil {
+        if note == nil {
             self.listViewController.notes.append(Note(text: textView.text))
         } else {
             note?.text = textView.text
