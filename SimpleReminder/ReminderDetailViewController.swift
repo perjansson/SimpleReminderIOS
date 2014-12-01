@@ -13,6 +13,8 @@ class ReminderDetailViewController : UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     
+    var listViewController = ReminderListViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
@@ -20,6 +22,7 @@ class ReminderDetailViewController : UIViewController {
     
     @IBAction func onSave(sender: AnyObject) {
         var text = textView.text
+        self.listViewController.reminders.append(text)
         self.navigationController?.popViewControllerAnimated(true)
     }
     

@@ -38,6 +38,11 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
         navigationController?.hidesBarsOnSwipe = true
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var detailViewController = segue.destinationViewController as ReminderDetailViewController
+        detailViewController.listViewController = self
+    }
+    
     @IBAction func unwindToList(segue: UIStoryboardSegue) {
         
     }
