@@ -21,6 +21,7 @@ class ReminderDetailViewController : UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         automaticallyAdjustsScrollViewInsets = false
+        textView.contentInset = UIEdgeInsetsMake(0.0, -5.0, 0.0, -5.0);
         
         textView.delegate = self
         textView.text = note?.text
