@@ -40,9 +40,10 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var note = self.notes[indexPath.row]
         var cell = UITableViewCell()
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        cell.textLabel!.text = self.notes[indexPath.row].text
+        cell.textLabel!.text = note.text! + (note.date != nil ? " 🔔" : "")
         return cell
     }
     
@@ -57,7 +58,6 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            // handle delete (by removing the data from your array and updating the tableview)
             self.notes.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }

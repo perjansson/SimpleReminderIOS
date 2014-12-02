@@ -12,10 +12,17 @@ class Note {
     
     var key:String?
     var text:String?
+    var date: NSDate?
     
     init(text: String) {
         self.key = NSUUID().UUIDString
         self.text = text
+    }
+    
+    init(text: String, date: NSDate) {
+        self.key = NSUUID().UUIDString
+        self.text = text
+        self.date = date
     }
     
     func isNew() -> Bool {
