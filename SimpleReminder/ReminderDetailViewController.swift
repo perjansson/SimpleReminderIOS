@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ReminderDetailViewController : UIViewController, UITextViewDelegate {
+class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var notificationTextView: UITextField!
     @IBOutlet weak var textView: UITextView!
@@ -23,13 +23,11 @@ class ReminderDetailViewController : UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initView()
+    }
+    
+    func initView() {
         automaticallyAdjustsScrollViewInsets = false
-        textView.contentInset = UIEdgeInsetsMake(0.0, -5.0, 0.0, -5.0);
-        
-        textView.delegate = self
-        textView.text = note?.text
-        saveButton.enabled = false
         
         dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
         DatePickerView.datePickerMode = UIDatePickerMode.DateAndTime
@@ -38,11 +36,23 @@ class ReminderDetailViewController : UIViewController, UITextViewDelegate {
         if note?.date != nil {
             notificationTextView.text = dateFormatter.stringFromDate(note!.date!)
         }
+        notificationTextView.delegate = self
+        
+        textView.contentInset = UIEdgeInsetsMake(0.0, -5.0, 0.0, -5.0);
+        textView.delegate = self
+        textView.text = note?.text
+        
+        saveButton.enabled = false
     }
     
     func dateTimePickerDidChange() {
         notificationTextView.attributedText = NSAttributedString(string: dateFormatter.stringFromDate(DatePickerView.date), attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
         toggleSaveButton()
+    }
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        toggleSaveButton()
+        return true
     }
     
     func textViewDidChange(textView: UITextView) {

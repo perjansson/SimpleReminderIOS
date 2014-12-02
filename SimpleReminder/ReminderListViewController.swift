@@ -43,7 +43,7 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
         var note = self.notes[indexPath.row]
         var cell = UITableViewCell()
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        cell.textLabel!.text = note.text! + (note.date != nil ? " 🔔" : "")
+        cell.textLabel!.text = note.text!
         return cell
     }
     
