@@ -10,24 +10,23 @@ import UIKit
 
 class ReminderListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var noteRepository = NoteRepository()
     var notes: [Note] = []
     var note: Note? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        
+        initView()
+        findAllNotes()
+    }
+    
+    func initView() {
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
-        self.notes.append(Note(text: "Buy milk"))
-        self.notes.append(Note(text: "Call Mike"))
-        self.notes.append(Note(text: "Walk the dog"))
-        self.notes.append(Note(text: "Push the code"))
-        self.notes.append(Note(text: "Make coffee"))
-        self.notes.append(Note(text: "Cut the lawn"))
-        self.notes.append(Note(text: "Paint the bedroom"))
+    }
+    
+    func findAllNotes() {
+        self.notes = noteRepository.findAll()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -58,7 +57,8 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            self.notes.removeAtIndex(indexPath.row)
+            noteRepository.delete(self.notes[indexPath.row])
+            findAllNotes()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
@@ -70,12 +70,18 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var detailViewController = segue.destinationViewController as ReminderDetailViewController
-        detailViewController.listViewController = self
+        detailViewController.delegate = self
         detailViewController.note = self.note
     }
     
     @IBAction func unwindToList(segue: UIStoryboardSegue) {
         
+    }
+    
+    func onSave(note: Note) {
+        self.noteRepository.save(note)
+        findAllNotes()
+        self.tableView.reloadData()
     }
 
 }

@@ -16,9 +16,9 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var dateFormatter = NSDateFormatter()
-    var DatePickerView  : UIDatePicker = UIDatePicker()
+    var DatePickerView: UIDatePicker = UIDatePicker()
     
-    var listViewController = ReminderListViewController()
+    var delegate: ReminderListViewController?
     var note: Note?
     
     override func viewDidLoad() {
@@ -65,12 +65,12 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     
     @IBAction func onSave(sender: AnyObject) {
         if note == nil {
-            self.listViewController.notes.append(Note(text: textView.text, date: DatePickerView.date))
+            self.delegate!.onSave(Note(text: textView.text, date: DatePickerView.date));
         } else {
             note?.text = textView.text
             note?.date = DatePickerView.date
+            self.delegate!.onSave(note!);
         }
-        self.listViewController.tableView.reloadData()
         self.navigationController?.popViewControllerAnimated(true)
     }
     

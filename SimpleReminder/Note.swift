@@ -15,14 +15,17 @@ class Note {
     var date: NSDate?
     
     init(text: String) {
-        self.key = NSUUID().UUIDString
         self.text = text
     }
     
     init(text: String, date: NSDate) {
-        self.key = NSUUID().UUIDString
         self.text = text
         self.date = date
+    }
+    
+    init(text: String, key: String) {
+        self.text = text
+        self.key = key
     }
     
     func isNew() -> Bool {
