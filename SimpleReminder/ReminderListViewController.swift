@@ -16,6 +16,8 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
@@ -39,6 +41,7 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         cell.textLabel!.text = self.notes[indexPath.row].text
         return cell
     }
