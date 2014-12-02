@@ -51,6 +51,18 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
         self.performSegueWithIdentifier("showDetailSegue", sender: self)
     }
     
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            // handle delete (by removing the data from your array and updating the tableview)
+            self.notes.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+    
     @IBAction func onNew(sender: AnyObject) {
         self.note = nil
         self.performSegueWithIdentifier("showDetailSegue", sender: self)
