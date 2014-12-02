@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 class Note {
     
     var key:String?
     var text:String?
     var date: NSDate?
+    var notification: UILocalNotification?
     
     init(text: String) {
         self.text = text

@@ -12,11 +12,23 @@ import UIKit
 class NotificationManager {
     
     func handleNotification(note: Note) {
+        if note.notification != nil {
+            cancelNotification(note)
+        }
+        scheduleNotification(note)
+    }
+    
+    func cancelNotification(note: Note) {
+        UIApplication.sharedApplication().cancelLocalNotification(note.notification!)
+    }
+    
+    func scheduleNotification(note: Note) {
         var localNotification:UILocalNotification = UILocalNotification()
         localNotification.alertAction = "OK"
         localNotification.alertBody = note.text
         localNotification.fireDate = note.date
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        note.notification = localNotification
     }
     
 }

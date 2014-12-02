@@ -80,8 +80,8 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     }
     
     func onSave(note: Note) {
-        self.noteRepository.save(note)
         self.notificationManager.handleNotification(note)
+        self.noteRepository.save(note)
         findAllNotes()
         self.tableView.reloadData()
     }
