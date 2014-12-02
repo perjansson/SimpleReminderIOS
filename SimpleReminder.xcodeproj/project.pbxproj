@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E41C60E1A2D064E007227A3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E41C60D1A2D064E007227A3 /* Note.swift */; };
 		2E41C6101A2E6322007227A3 /* NoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E41C60F1A2E6322007227A3 /* NoteRepository.swift */; };
+		2E41C6141A2E6F07007227A3 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E41C6131A2E6F07007227A3 /* NotificationManager.swift */; };
 		2E7D5A791A2B5E4A009F762B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A781A2B5E4A009F762B /* AppDelegate.swift */; };
 		2E7D5A7C1A2B5E4A009F762B /* SimpleReminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A7A1A2B5E4A009F762B /* SimpleReminder.xcdatamodeld */; };
 		2E7D5A7E1A2B5E4A009F762B /* ReminderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A7D1A2B5E4A009F762B /* ReminderListViewController.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		2E41C60D1A2D064E007227A3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		2E41C60F1A2E6322007227A3 /* NoteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteRepository.swift; sourceTree = "<group>"; };
+		2E41C6131A2E6F07007227A3 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		2E7D5A731A2B5E4A009F762B /* SimpleReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E7D5A771A2B5E4A009F762B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E7D5A781A2B5E4A009F762B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				2E7D5A9B1A2B7CF7009F762B /* ReminderDetailViewController.swift */,
 				2E41C60D1A2D064E007227A3 /* Note.swift */,
 				2E41C60F1A2E6322007227A3 /* NoteRepository.swift */,
+				2E41C6131A2E6F07007227A3 /* NotificationManager.swift */,
 				2E7D5A7F1A2B5E4A009F762B /* Main.storyboard */,
 				2E7D5A821A2B5E4A009F762B /* Images.xcassets */,
 				2E7D5A841A2B5E4A009F762B /* LaunchScreen.xib */,
@@ -228,6 +231,7 @@
 				2E7D5A7E1A2B5E4A009F762B /* ReminderListViewController.swift in Sources */,
 				2E7D5A9C1A2B7CF7009F762B /* ReminderDetailViewController.swift in Sources */,
 				2E41C6101A2E6322007227A3 /* NoteRepository.swift in Sources */,
+				2E41C6141A2E6F07007227A3 /* NotificationManager.swift in Sources */,
 				2E7D5A791A2B5E4A009F762B /* AppDelegate.swift in Sources */,
 				2E7D5A7C1A2B5E4A009F762B /* SimpleReminder.xcdatamodeld in Sources */,
 			);

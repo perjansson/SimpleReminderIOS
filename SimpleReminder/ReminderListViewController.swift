@@ -10,6 +10,7 @@ import UIKit
 
 class ReminderListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var notificationManager = NotificationManager()
     var noteRepository = NoteRepository()
     var notes: [Note] = []
     var note: Note? = nil
@@ -80,6 +81,7 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     
     func onSave(note: Note) {
         self.noteRepository.save(note)
+        self.notificationManager.handleNotification(note)
         findAllNotes()
         self.tableView.reloadData()
     }
