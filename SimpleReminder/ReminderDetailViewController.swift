@@ -105,7 +105,15 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     }
     
     func toggleSaveButton() {
-        saveButton.enabled = textView.text != note?.text || datePickerView.date != note?.date
+        saveButton.enabled = dateOrTextHasChanges() && dateIsAfterNow()
+    }
+    
+    func dateOrTextHasChanges() -> Bool {
+        return textView.text != note?.text || datePickerView.date != note?.date
+    }
+    
+    func dateIsAfterNow() -> Bool {
+        return datePickerView.date.laterDate(NSDate()) == datePickerView.date
     }
     
 }
