@@ -45,8 +45,44 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
         saveButton.enabled = false
     }
     
+    @IBAction func onSave(sender: AnyObject) {
+        if note == nil {
+            var newNote = Note(text: textView.text)
+            newNote.date = getSelectedDate()
+            self.delegate!.onSave(newNote);
+        } else {
+            note!.text = textView.text
+            note!.date = getSelectedDate()
+            self.delegate!.onSave(note!);
+        }
+        
+        if note!.date != nil {
+            //println("Saving note with text '" + note!.text! + "' and date " + dateFormatter.stringFromDate(note!.date!))
+        } else {
+            //println("Saving note with text '" + note!.text! + "'")
+        }
+        
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func getSelectedDate() -> NSDate? {
+        if notificationTextView.text != "" {
+            let date = dateFormatter.dateFromString(notificationTextView.text)
+            let calendar = NSCalendar( calendarIdentifier:NSGregorianCalendar )
+            let components = calendar?.components( NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit, fromDate: date! )
+            let dateStrippedOfTimeComponent : NSDate? = calendar?.dateFromComponents(components!)
+            return dateStrippedOfTimeComponent!
+        } else {
+            return nil
+        }
+    }
+    
     func dateTimePickerDidChange() {
         notificationTextView.attributedText = NSAttributedString(string: dateFormatter.stringFromDate(DatePickerView.date), attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
+        toggleSaveButton()
+    }
+    
+    func textViewDidChange(textView: UITextView) {
         toggleSaveButton()
     }
     
@@ -55,23 +91,8 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
         return true
     }
     
-    func textViewDidChange(textView: UITextView) {
-        toggleSaveButton()
-    }
-    
     func toggleSaveButton() {
         saveButton.enabled = textView.text != note?.text || DatePickerView.date != note?.date
-    }
-    
-    @IBAction func onSave(sender: AnyObject) {
-        if note == nil {
-            self.delegate!.onSave(Note(text: textView.text, date: DatePickerView.date));
-        } else {
-            note?.text = textView.text
-            note?.date = DatePickerView.date
-            self.delegate!.onSave(note!);
-        }
-        self.navigationController?.popViewControllerAnimated(true)
     }
     
 }

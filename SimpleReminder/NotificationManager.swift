@@ -15,11 +15,16 @@ class NotificationManager {
         if note.notification != nil {
             cancelNotification(note)
         }
-        scheduleNotification(note)
+        
+        if note.date != nil {
+            scheduleNotification(note)
+        }
     }
     
     func cancelNotification(note: Note) {
+        //println("Cancelling notification " + note.notification!.description)
         UIApplication.sharedApplication().cancelLocalNotification(note.notification!)
+        note.notification = nil
     }
     
     func scheduleNotification(note: Note) {
@@ -29,6 +34,7 @@ class NotificationManager {
         localNotification.fireDate = note.date
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         note.notification = localNotification
+        //println("Scheduling notification " + note.notification!.description)
     }
     
 }

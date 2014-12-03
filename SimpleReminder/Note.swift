@@ -20,11 +20,6 @@ class Note {
         self.text = text
     }
     
-    init(text: String, date: NSDate) {
-        self.text = text
-        self.date = date
-    }
-    
     init(text: String, key: String) {
         self.text = text
         self.key = key
