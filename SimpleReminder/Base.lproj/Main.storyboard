@@ -8,7 +8,7 @@
         <!--Navigation Controller-->
         <scene sceneID="DfZ-cG-Dvp">
             <objects>
-                <navigationController id="Q7k-hL-Flv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" id="Q7k-hL-Flv" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7KW-Hh-jzy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -24,7 +24,7 @@
         <!--Notes-->
         <scene sceneID="tLa-no-7zi">
             <objects>
-                <tableViewController id="pat-Fi-DB3" customClass="ReminderListViewController" customModule="SimpleReminder" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ReminderListViewController" id="pat-Fi-DB3" customClass="ReminderListViewController" customModule="SimpleReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="PuH-ut-b6b">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,7 @@
         <!--Note-->
         <scene sceneID="6U5-Mc-Il9">
             <objects>
-                <viewController id="Toh-2D-Q9Z" customClass="ReminderDetailViewController" customModule="SimpleReminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReminderDetailViewController" id="Toh-2D-Q9Z" customClass="ReminderDetailViewController" customModule="SimpleReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eW1-bz-rxz"/>
                         <viewControllerLayoutGuide type="bottom" id="tVH-tv-Pui"/>

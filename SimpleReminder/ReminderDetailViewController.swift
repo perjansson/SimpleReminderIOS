@@ -27,6 +27,19 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
         initView()
     }
     
+    class func showNote(note: Note) {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController = mainStoryboard.instantiateViewControllerWithIdentifier("NavigationController") as UINavigationController
+        UIApplication.sharedApplication().keyWindow!.rootViewController = navigationController
+        
+        let reminderListViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ReminderListViewController") as ReminderListViewController
+        let reminderDetailViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ReminderDetailViewController") as ReminderDetailViewController
+        reminderDetailViewController.delegate = reminderListViewController
+        reminderDetailViewController.note = note
+        
+        navigationController.pushViewController(reminderDetailViewController, animated: true)
+    }
+    
     func initView() {
         automaticallyAdjustsScrollViewInsets = false
         

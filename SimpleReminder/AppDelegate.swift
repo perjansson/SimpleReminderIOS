@@ -16,10 +16,23 @@ let log = XCGLogger.defaultInstance()
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var noteRepository = NoteRepository()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Registering for sending user various kinds of notifications
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        var notificationActionDone :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        notificationActionDone.identifier = "OPEN_IDENTIFIER"
+        notificationActionDone.title = "Open"
+        notificationActionDone.destructive = false
+        notificationActionDone.authenticationRequired = true
+        notificationActionDone.activationMode = UIUserNotificationActivationMode.Foreground
+        
+        var notificationCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        notificationCategory.identifier = "NOTE_CATEGORY"
+        notificationCategory.setActions([notificationActionDone], forContext: UIUserNotificationActionContext.Default)
+        notificationCategory.setActions([notificationActionDone], forContext: UIUserNotificationActionContext.Minimal)
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: NSSet(array:[notificationCategory])))
         
         // Logging
         log.setup(logLevel: .Info, showLogLevel: true, showFileNames: true, showLineNumbers: true)
@@ -36,7 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
-        var h = ""
+        if notification.category == "NOTE_CATEGORY" {
+            if identifier == "OPEN_IDENTIFIER" {
+                let noteKey = notification.userInfo!["key"] as? NSString
+                ReminderDetailViewController.showNote(self.noteRepository.getNoteByKey(noteKey!)!)
+            }
+        }
+        completionHandler()
     }
     
     func application(application: UIApplication!, didReceiveLocalNotification notification: UILocalNotification!) {
