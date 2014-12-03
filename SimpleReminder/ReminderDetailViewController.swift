@@ -17,7 +17,7 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var dateFormatter = NSDateFormatter()
-    var DatePickerView: UIDatePicker = UIDatePicker()
+    var datePickerView: UIDatePicker = UIDatePicker()
     
     var delegate: ReminderListViewController?
     var note: Note?
@@ -31,12 +31,12 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
         automaticallyAdjustsScrollViewInsets = false
         
         dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
-        DatePickerView.datePickerMode = UIDatePickerMode.DateAndTime
-        DatePickerView.addTarget(self, action: Selector("dateTimePickerDidChange"), forControlEvents: UIControlEvents.ValueChanged)
-        notificationTextView.inputView = DatePickerView
+        datePickerView.datePickerMode = UIDatePickerMode.DateAndTime
+        datePickerView.addTarget(self, action: Selector("dateTimePickerDidChange"), forControlEvents: UIControlEvents.ValueChanged)
+        notificationTextView.inputView = datePickerView
         if note?.date != nil {
             notificationTextView.text = dateFormatter.stringFromDate(note!.date!)
-            DatePickerView.date = note!.date!
+            datePickerView.date = note!.date!
         }
         notificationTextView.delegate = self
         
@@ -76,8 +76,17 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     }
     
     func dateTimePickerDidChange() {
-        notificationTextView.attributedText = NSAttributedString(string: dateFormatter.stringFromDate(DatePickerView.date), attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
+        notificationTextView.attributedText = NSAttributedString(string: dateFormatter.stringFromDate(datePickerView.date), attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
         toggleSaveButton()
+    }
+    
+    func textFieldDidBeginEditing(textView: UITextView) -> Bool {
+        datePickerView.minimumDate = NSDate()
+        return true
+    }
+    
+    func textField(textField: UITextField!, shouldChangeCharactersInRange range: NSRange, replacementString string: String!) -> Bool {
+        return false;
     }
     
     func textViewDidChange(textView: UITextView) {
@@ -85,13 +94,13 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     }
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
-        DatePickerView.date = NSDate()
+        datePickerView.date = NSDate()
         toggleSaveButton()
         return true
     }
     
     func toggleSaveButton() {
-        saveButton.enabled = textView.text != note?.text || DatePickerView.date != note?.date
+        saveButton.enabled = textView.text != note?.text || datePickerView.date != note?.date
     }
     
 }
