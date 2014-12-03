@@ -20,29 +20,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Registering for sending user various kinds of notifications
-        var notificationActionDone :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-        notificationActionDone.identifier = "OPEN_IDENTIFIER"
-        notificationActionDone.title = "Open"
-        notificationActionDone.destructive = false
-        notificationActionDone.authenticationRequired = true
-        notificationActionDone.activationMode = UIUserNotificationActivationMode.Foreground
+        var notificationActionOpen :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        notificationActionOpen.identifier = "OPEN_IDENTIFIER"
+        notificationActionOpen.title = "Open"
+        notificationActionOpen.destructive = false
+        notificationActionOpen.authenticationRequired = true
+        notificationActionOpen.activationMode = UIUserNotificationActivationMode.Foreground
+        
+        var notificationActionOK :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        notificationActionOK.identifier = "OK_IDENTIFIER"
+        notificationActionOK.title = "OK"
+        notificationActionOK.destructive = false
+        notificationActionOK.authenticationRequired = true
+        notificationActionOK.activationMode = UIUserNotificationActivationMode.Background
         
         var notificationCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         notificationCategory.identifier = "NOTE_CATEGORY"
-        notificationCategory.setActions([notificationActionDone], forContext: UIUserNotificationActionContext.Default)
-        notificationCategory.setActions([notificationActionDone], forContext: UIUserNotificationActionContext.Minimal)
+        notificationCategory.setActions([notificationActionOpen, notificationActionOK], forContext: UIUserNotificationActionContext.Default)
+        notificationCategory.setActions([notificationActionOpen, notificationActionOK], forContext: UIUserNotificationActionContext.Minimal)
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: NSSet(array:[notificationCategory])))
         
         // Logging
         log.setup(logLevel: .Info, showLogLevel: true, showFileNames: true, showLineNumbers: true)
-        
-        // Handle any local notification
-        let notification = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as UILocalNotification!
-        if (notification != nil) {
-            // Do your stuff with notification
-            var h = ""
-        }
         
         // Override point for customization after application launch.
         return true
@@ -50,9 +50,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
         if notification.category == "NOTE_CATEGORY" {
+            let noteKey = notification.userInfo!["key"] as? NSString
+            let note = self.noteRepository.getNoteByKey(noteKey!)!
+            note.date = nil
             if identifier == "OPEN_IDENTIFIER" {
-                let noteKey = notification.userInfo!["key"] as? NSString
-                ReminderDetailViewController.showNote(self.noteRepository.getNoteByKey(noteKey!)!)
+                ReminderDetailViewController.showNote(note)
+            } else if identifier == "OK_IDENTIFIER" {
+                // Not much to do...
             }
         }
         completionHandler()
