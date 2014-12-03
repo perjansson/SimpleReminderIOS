@@ -29,7 +29,6 @@ class NotificationManager {
     
     func scheduleNotification(note: Note) {
         var localNotification:UILocalNotification = UILocalNotification()
-        localNotification.alertAction = "OK"
         localNotification.alertBody = note.text
         localNotification.fireDate = note.date
         localNotification.soundName = UILocalNotificationDefaultSoundName
