@@ -36,6 +36,7 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
         notificationTextView.inputView = DatePickerView
         if note?.date != nil {
             notificationTextView.text = dateFormatter.stringFromDate(note!.date!)
+            DatePickerView.date = note!.date!
         }
         notificationTextView.delegate = self
         
@@ -84,6 +85,7 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     }
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
+        DatePickerView.date = NSDate()
         toggleSaveButton()
         return true
     }

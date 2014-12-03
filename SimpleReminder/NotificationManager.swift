@@ -32,6 +32,7 @@ class NotificationManager {
         localNotification.alertAction = "OK"
         localNotification.alertBody = note.text
         localNotification.fireDate = note.date
+        localNotification.soundName = UILocalNotificationDefaultSoundName
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         note.notification = localNotification
         log.debug("Scheduling notification " + note.notification!.description)
