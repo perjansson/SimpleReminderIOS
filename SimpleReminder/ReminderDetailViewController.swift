@@ -30,7 +30,8 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     func initView() {
         automaticallyAdjustsScrollViewInsets = false
         
-        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
+        dateFormatter.dateStyle = .ShortStyle
+        dateFormatter.timeStyle = .ShortStyle
         datePickerView.datePickerMode = UIDatePickerMode.DateAndTime
         datePickerView.addTarget(self, action: Selector("dateTimePickerDidChange"), forControlEvents: UIControlEvents.ValueChanged)
         notificationTextView.inputView = datePickerView
