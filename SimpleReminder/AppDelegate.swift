@@ -20,10 +20,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Registering for sending user various kinds of notifications
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        
         // Logging
         log.setup(logLevel: .Info, showLogLevel: true, showFileNames: true, showLineNumbers: true)
+        
+        // Handle any local notification
+        let notification = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as UILocalNotification!
+        if (notification != nil) {
+            // Do your stuff with notification
+            var h = ""
+        }
+        
         // Override point for customization after application launch.
         return true
+    }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        var h = ""
+    }
+    
+    func application(application: UIApplication!, didReceiveLocalNotification notification: UILocalNotification!) {
+        // Local notification received when app is running
     }
 
     func applicationWillResignActive(application: UIApplication) {

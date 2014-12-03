@@ -82,7 +82,7 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     }
     
     func textFieldDidBeginEditing(textView: UITextView) -> Bool {
-        datePickerView.minimumDate = NSDate()
+        datePickerView.minimumDate = defaultMinimumDate()
         return true
     }
     
@@ -95,9 +95,13 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     }
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
-        datePickerView.date = NSDate()
+        datePickerView.date = defaultMinimumDate()
         toggleSaveButton()
         return true
+    }
+    
+    func defaultMinimumDate() -> NSDate {
+        return NSDate().dateByAddingTimeInterval(60)
     }
     
     func toggleSaveButton() {
