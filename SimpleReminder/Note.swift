@@ -25,8 +25,8 @@ class Note {
         self.key = key
     }
     
-    func isNew() -> Bool {
-        return key == nil
+    var description: String {
+        return "Text: \(text) Date: \(date)"
     }
     
 }

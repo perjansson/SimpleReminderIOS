@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import XCGLogger
 
 class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
@@ -55,12 +56,8 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
             note!.date = getSelectedDate()
             self.delegate!.onSave(note!);
         }
-        
-        if note!.date != nil {
-            //println("Saving note with text '" + note!.text! + "' and date " + dateFormatter.stringFromDate(note!.date!))
-        } else {
-            //println("Saving note with text '" + note!.text! + "'")
-        }
+                
+        log.debug("Saving note '" + note!.description)
         
         self.navigationController?.popViewControllerAnimated(true)
     }

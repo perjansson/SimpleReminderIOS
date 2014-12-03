@@ -10,6 +10,8 @@
 		2E41C60E1A2D064E007227A3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E41C60D1A2D064E007227A3 /* Note.swift */; };
 		2E41C6101A2E6322007227A3 /* NoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E41C60F1A2E6322007227A3 /* NoteRepository.swift */; };
 		2E41C6141A2E6F07007227A3 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E41C6131A2E6F07007227A3 /* NotificationManager.swift */; };
+		2E41C6301A2F8E53007227A3 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E41C61C1A2F8DE3007227A3 /* XCGLogger.framework */; };
+		2E41C6311A2F8E53007227A3 /* XCGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E41C61C1A2F8DE3007227A3 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2E7D5A791A2B5E4A009F762B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A781A2B5E4A009F762B /* AppDelegate.swift */; };
 		2E7D5A7C1A2B5E4A009F762B /* SimpleReminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A7A1A2B5E4A009F762B /* SimpleReminder.xcdatamodeld */; };
 		2E7D5A7E1A2B5E4A009F762B /* ReminderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A7D1A2B5E4A009F762B /* ReminderListViewController.swift */; };
@@ -21,6 +23,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2E41C61B1A2F8DE3007227A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E41C6151A2F8DE3007227A3 /* XCGLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55E3EE4519D76F280068C3A7;
+			remoteInfo = "XCGLogger (iOS)";
+		};
+		2E41C61D1A2F8DE3007227A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E41C6151A2F8DE3007227A3 /* XCGLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 554DF41719D76FE7005708BE;
+			remoteInfo = "XCGLogger (OS X)";
+		};
+		2E41C61F1A2F8DE3007227A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E41C6151A2F8DE3007227A3 /* XCGLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55E3EE5019D76F280068C3A7;
+			remoteInfo = XCGLoggerTests;
+		};
+		2E41C6321A2F8E53007227A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E41C6151A2F8DE3007227A3 /* XCGLogger.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 55E3EE4419D76F280068C3A7;
+			remoteInfo = "XCGLogger (iOS)";
+		};
 		2E7D5A8C1A2B5E4A009F762B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2E7D5A6B1A2B5E4A009F762B /* Project object */;
@@ -30,10 +60,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2E41C6341A2F8E53007227A3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2E41C6311A2F8E53007227A3 /* XCGLogger.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2E41C60D1A2D064E007227A3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		2E41C60F1A2E6322007227A3 /* NoteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteRepository.swift; sourceTree = "<group>"; };
 		2E41C6131A2E6F07007227A3 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		2E41C6151A2F8DE3007227A3 /* XCGLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XCGLogger.xcodeproj; path = ../../XCGLogger/XCGLogger/Library/XCGLogger.xcodeproj; sourceTree = "<group>"; };
 		2E7D5A731A2B5E4A009F762B /* SimpleReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E7D5A771A2B5E4A009F762B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E7D5A781A2B5E4A009F762B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E41C6301A2F8E53007227A3 /* XCGLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,9 +112,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E41C6161A2F8DE3007227A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2E41C61C1A2F8DE3007227A3 /* XCGLogger.framework */,
+				2E41C61E1A2F8DE3007227A3 /* XCGLogger.framework */,
+				2E41C6201A2F8DE3007227A3 /* XCGLoggerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2E7D5A6A1A2B5E4A009F762B = {
 			isa = PBXGroup;
 			children = (
+				2E41C6151A2F8DE3007227A3 /* XCGLogger.xcodeproj */,
 				2E7D5A751A2B5E4A009F762B /* SimpleReminder */,
 				2E7D5A8E1A2B5E4A009F762B /* SimpleReminderTests */,
 				2E7D5A741A2B5E4A009F762B /* Products */,
@@ -137,10 +194,12 @@
 				2E7D5A6F1A2B5E4A009F762B /* Sources */,
 				2E7D5A701A2B5E4A009F762B /* Frameworks */,
 				2E7D5A711A2B5E4A009F762B /* Resources */,
+				2E41C6341A2F8E53007227A3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2E41C6331A2F8E53007227A3 /* PBXTargetDependency */,
 			);
 			name = SimpleReminder;
 			productName = SimpleReminder;
@@ -194,6 +253,12 @@
 			mainGroup = 2E7D5A6A1A2B5E4A009F762B;
 			productRefGroup = 2E7D5A741A2B5E4A009F762B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2E41C6161A2F8DE3007227A3 /* Products */;
+					ProjectRef = 2E41C6151A2F8DE3007227A3 /* XCGLogger.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2E7D5A721A2B5E4A009F762B /* SimpleReminder */,
@@ -201,6 +266,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2E41C61C1A2F8DE3007227A3 /* XCGLogger.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XCGLogger.framework;
+			remoteRef = 2E41C61B1A2F8DE3007227A3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2E41C61E1A2F8DE3007227A3 /* XCGLogger.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XCGLogger.framework;
+			remoteRef = 2E41C61D1A2F8DE3007227A3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2E41C6201A2F8DE3007227A3 /* XCGLoggerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = XCGLoggerTests.xctest;
+			remoteRef = 2E41C61F1A2F8DE3007227A3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2E7D5A711A2B5E4A009F762B /* Resources */ = {
@@ -248,6 +337,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2E41C6331A2F8E53007227A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "XCGLogger (iOS)";
+			targetProxy = 2E41C6321A2F8E53007227A3 /* PBXContainerItemProxy */;
+		};
 		2E7D5A8D1A2B5E4A009F762B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2E7D5A721A2B5E4A009F762B /* SimpleReminder */;
@@ -358,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SimpleReminder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -370,6 +465,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SimpleReminder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -8,16 +8,20 @@
 
 import UIKit
 import CoreData
+import XCGLogger
+
+let log = XCGLogger.defaultInstance()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Registering for sending user various kinds of notifications
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        // Logging
+        log.setup(logLevel: .Info, showLogLevel: true, showFileNames: true, showLineNumbers: true)
         // Override point for customization after application launch.
         return true
     }
