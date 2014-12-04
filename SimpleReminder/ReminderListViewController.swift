@@ -17,8 +17,26 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()        
-        initView()
+        initView()        
+        
+        let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let firstTimeLoggingIn: Bool? = userDefaults.objectForKey("firstTimeLogin") as? Bool
+        if (firstTimeLoggingIn == nil) {
+            userDefaults.setBool(true, forKey: "firstTimeLogin")
+            actionSheetForFirstLogin()
+        }
+        
         findAllNotes()
+    }
+    
+    func actionSheetForFirstLogin() {
+        var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+        var newNote = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: context!) as Note
+        newNote.key = NSUUID().UUIDString
+        newNote.text = "First note with instructions\n\nHi, and thanks for getting this super simple app to save notes. Create as many notes as you like, add an optional time to be notified and just hit save.\n\nIf you want to delete a note just swipe it in the list and hit delete. Hope you enjoy the app! :)"
+        newNote.createddate = NSDate()
+        newNote.lastupdateddate = NSDate()
+        context!.save(nil)
     }
     
     class func showNotes() {
