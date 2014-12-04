@@ -64,15 +64,16 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     @IBAction func onSave(sender: AnyObject) {
         if note == nil {
             var newNote = Note(text: textView.text)
+            newNote.createdDate = NSDate()
+            newNote.lastUpdatedDate = NSDate()
             newNote.date = getSelectedDate()
             self.delegate!.onSave(newNote);
         } else {
             note!.text = textView.text
             note!.date = getSelectedDate()
+            note!.lastUpdatedDate = NSDate()
             self.delegate!.onSave(note!);
         }
-                
-        log.debug("Saving note '" + note!.description)
         
         self.navigationController?.popViewControllerAnimated(true)
     }

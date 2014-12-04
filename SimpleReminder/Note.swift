@@ -11,10 +11,15 @@ import UIKit
 
 class Note {
     
-    var key:String?
-    var text:String?
+    var key: String?
+    var text: String?
     var date: NSDate?
     var notification: UILocalNotification?
+    
+    // Audit stuff
+    var createdDate: NSDate?
+    var lastUpdatedDate: NSDate?
+    var deleted: Bool = false
     
     init(text: String) {
         self.text = text
@@ -26,7 +31,7 @@ class Note {
     }
     
     var description: String {
-        return "Text: \(text) Date: \(date)"
+        return "Text: \(text) Date: \(date) CreatedDate: \(createdDate) LastUpdatedDate: \(lastUpdatedDate) Deleted: \(deleted)"
     }
     
 }

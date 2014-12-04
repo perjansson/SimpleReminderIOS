@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: NSSet(array:[notificationCategory])))
                 
         // Logging
-        log.setup(logLevel: .Info, showLogLevel: true, showFileNames: true, showLineNumbers: true)
+        log.setup(logLevel: .Debug, showLogLevel: true, showFileNames: true, showLineNumbers: true)
         
         // Override point for customization after application launch.
         return true

@@ -36,9 +36,14 @@ class NoteRepository {
     }
     
     func save(note: Note) {
+        log.debug("Saving note " + note.description)
         if note.key == nil {
+            // New note
             note.key = NSUUID().UUIDString
             notes.append(note)
+        } else {
+            // Update note
+            
         }
     }
     
