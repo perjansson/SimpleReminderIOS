@@ -51,12 +51,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
         if notification.category == "NOTE_CATEGORY" {
             let noteKey = notification.userInfo!["key"] as? NSString
-            let note = self.noteRepository.getNoteByKey(noteKey!)!
-            note.date = nil
-            if identifier == "OPEN_IDENTIFIER" {
-                ReminderDetailViewController.showNote(note)
-            } else if identifier == "OK_IDENTIFIER" {
-                // Not much to do...
+            var note : Note? = self.noteRepository.getNoteByKey(noteKey!)!
+            if note != nil {
+                note!.date = nil
+                if identifier == "OPEN_IDENTIFIER" {
+                    ReminderDetailViewController.showNote(note!)
+                } else if identifier == "OK_IDENTIFIER" {
+                    // Not much to do...
+                }
+            } else {
+                ReminderListViewController()
             }
         }
         completionHandler()

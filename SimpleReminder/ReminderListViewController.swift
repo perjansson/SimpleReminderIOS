@@ -21,6 +21,16 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
         findAllNotes()
     }
     
+    class func showNotes() {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController = mainStoryboard.instantiateViewControllerWithIdentifier("NavigationController") as UINavigationController
+        UIApplication.sharedApplication().keyWindow!.rootViewController = navigationController
+        
+        let reminderListViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ReminderListViewController") as ReminderListViewController
+        
+        navigationController.pushViewController(reminderListViewController, animated: true)
+    }
+    
     func initView() {
         self.tableView.dataSource = self
         self.tableView.delegate = self
