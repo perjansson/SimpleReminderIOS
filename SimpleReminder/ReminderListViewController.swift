@@ -37,9 +37,15 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     }
     
     func findAllNotes() {
+        self.notes = []
         var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
         var request = NSFetchRequest(entityName: "Note")
-        self.notes = context?.executeFetchRequest(request, error: nil)! as [Note]
+        var allNotes = context?.executeFetchRequest(request, error: nil)! as [Note]
+        for note:Note in allNotes {
+            if !note.isdeleted {
+                self.notes.append(note)
+            }
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -72,7 +78,9 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
-            context?.deleteObject(self.notes[indexPath.row])
+            var note = self.notes[indexPath.row]
+            note.isdeleted = true
+            context!.save(nil)
             findAllNotes()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
