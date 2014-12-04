@@ -126,7 +126,7 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     }
     
     func dateIsAfterNow() -> Bool {
-        return datePickerView.date.laterDate(NSDate()) == datePickerView.date
+        return notificationTextView.text.isEmpty || (datePickerView.date.laterDate(NSDate()) == datePickerView.date)
     }
     
 }

@@ -53,8 +53,8 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
         var note = self.notes[indexPath.row]
         var cell = UITableViewCell()
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        cell.textLabel.text = note.text!
-        cell.textLabel.font = UIFont(name: "AvenirNext-Regular", size: 17)
+        cell.textLabel!.text = note.text!
+        cell.textLabel!.font = UIFont(name: "AvenirNext-Regular", size: 17)
         return cell
     }
     
