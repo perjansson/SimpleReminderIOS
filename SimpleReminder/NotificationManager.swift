@@ -34,6 +34,7 @@ class NotificationManager {
         localNotification.fireDate = note.date
         localNotification.userInfo = ["key":note.key!]
         localNotification.soundName = UILocalNotificationDefaultSoundName
+        localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1;
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         note.notification = localNotification
         log.debug("Scheduling notification " + note.notification!.description)

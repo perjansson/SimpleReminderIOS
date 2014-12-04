@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationCategory.setActions([notificationActionOpen, notificationActionOK], forContext: UIUserNotificationActionContext.Minimal)
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: NSSet(array:[notificationCategory])))
-        
+                
         // Logging
         log.setup(logLevel: .Info, showLogLevel: true, showFileNames: true, showLineNumbers: true)
         
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication!, didReceiveLocalNotification notification: UILocalNotification!) {
-        // Local notification received when app is running
+        //application.applicationIconBadgeNumber = 0
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -86,6 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        application.applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(application: UIApplication) {

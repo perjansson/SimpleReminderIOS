@@ -16,7 +16,7 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     var note: Note? = nil
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
         initView()
         findAllNotes()
     }
