@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E41C60E1A2D064E007227A3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E41C60D1A2D064E007227A3 /* Note.swift */; };
-		2E41C6101A2E6322007227A3 /* NoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E41C60F1A2E6322007227A3 /* NoteRepository.swift */; };
 		2E41C6141A2E6F07007227A3 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E41C6131A2E6F07007227A3 /* NotificationManager.swift */; };
 		2E41C6301A2F8E53007227A3 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E41C61C1A2F8DE3007227A3 /* XCGLogger.framework */; };
 		2E41C6311A2F8E53007227A3 /* XCGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E41C61C1A2F8DE3007227A3 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -20,6 +18,7 @@
 		2E7D5A861A2B5E4A009F762B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7D5A841A2B5E4A009F762B /* LaunchScreen.xib */; };
 		2E7D5A921A2B5E4A009F762B /* SimpleReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A911A2B5E4A009F762B /* SimpleReminderTests.swift */; };
 		2E7D5A9C1A2B7CF7009F762B /* ReminderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D5A9B1A2B7CF7009F762B /* ReminderDetailViewController.swift */; };
+		2EAD2A911A30F2A4003A7424 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAD2A901A30F2A4003A7424 /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +74,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2E41C60D1A2D064E007227A3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		2E41C60F1A2E6322007227A3 /* NoteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteRepository.swift; sourceTree = "<group>"; };
 		2E41C6131A2E6F07007227A3 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		2E41C6151A2F8DE3007227A3 /* XCGLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XCGLogger.xcodeproj; path = ../../XCGLogger/XCGLogger/Library/XCGLogger.xcodeproj; sourceTree = "<group>"; };
 		2E7D5A731A2B5E4A009F762B /* SimpleReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +88,7 @@
 		2E7D5A901A2B5E4A009F762B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E7D5A911A2B5E4A009F762B /* SimpleReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleReminderTests.swift; sourceTree = "<group>"; };
 		2E7D5A9B1A2B7CF7009F762B /* ReminderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderDetailViewController.swift; sourceTree = "<group>"; };
+		2EAD2A901A30F2A4003A7424 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,8 +145,7 @@
 				2E7D5A781A2B5E4A009F762B /* AppDelegate.swift */,
 				2E7D5A7D1A2B5E4A009F762B /* ReminderListViewController.swift */,
 				2E7D5A9B1A2B7CF7009F762B /* ReminderDetailViewController.swift */,
-				2E41C60D1A2D064E007227A3 /* Note.swift */,
-				2E41C60F1A2E6322007227A3 /* NoteRepository.swift */,
+				2EAD2A901A30F2A4003A7424 /* Note.swift */,
 				2E41C6131A2E6F07007227A3 /* NotificationManager.swift */,
 				2E7D5A7F1A2B5E4A009F762B /* Main.storyboard */,
 				2E7D5A821A2B5E4A009F762B /* Images.xcassets */,
@@ -316,10 +313,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E41C60E1A2D064E007227A3 /* Note.swift in Sources */,
 				2E7D5A7E1A2B5E4A009F762B /* ReminderListViewController.swift in Sources */,
 				2E7D5A9C1A2B7CF7009F762B /* ReminderDetailViewController.swift in Sources */,
-				2E41C6101A2E6322007227A3 /* NoteRepository.swift in Sources */,
+				2EAD2A911A30F2A4003A7424 /* Note.swift in Sources */,
 				2E41C6141A2E6F07007227A3 /* NotificationManager.swift in Sources */,
 				2E7D5A791A2B5E4A009F762B /* AppDelegate.swift in Sources */,
 				2E7D5A7C1A2B5E4A009F762B /* SimpleReminder.xcdatamodeld in Sources */,

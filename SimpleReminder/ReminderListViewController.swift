@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class ReminderListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
     var notificationManager = NotificationManager()
-    var noteRepository = NoteRepository()
     var notes: [Note] = []
     var note: Note? = nil
     
@@ -37,7 +37,9 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     }
     
     func findAllNotes() {
-        self.notes = noteRepository.findAll()
+        var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+        var request = NSFetchRequest(entityName: "Note")
+        self.notes = context?.executeFetchRequest(request, error: nil)! as [Note]
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -53,7 +55,7 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
         var note = self.notes[indexPath.row]
         var cell = UITableViewCell()
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        cell.textLabel!.text = note.text!
+        cell.textLabel!.text = note.text
         cell.textLabel!.font = UIFont(name: "AvenirNext-Regular", size: 17)
         return cell
     }
@@ -69,7 +71,8 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            noteRepository.delete(self.notes[indexPath.row])
+            var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+            context?.deleteObject(self.notes[indexPath.row])
             findAllNotes()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
@@ -92,7 +95,6 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     
     func onSave(note: Note) {
         self.notificationManager.handleNotification(note)
-        self.noteRepository.save(note)
         findAllNotes()
         self.tableView.reloadData()
     }

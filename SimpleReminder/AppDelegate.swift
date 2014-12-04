@@ -16,7 +16,6 @@ let log = XCGLogger.defaultInstance()
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var noteRepository = NoteRepository()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Registering for sending user various kinds of notifications
@@ -42,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: NSSet(array:[notificationCategory])))
                 
         // Logging
-        log.setup(logLevel: .Debug, showLogLevel: true, showFileNames: true, showLineNumbers: true)
+        log.setup(logLevel: .Info, showLogLevel: true, showFileNames: true, showLineNumbers: true)
         
         // Override point for customization after application launch.
         return true
@@ -51,23 +50,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
         if notification.category == "NOTE_CATEGORY" {
             let noteKey = notification.userInfo!["key"] as? NSString
-            var note : Note? = self.noteRepository.getNoteByKey(noteKey!)!
-            if note != nil {
-                note!.date = nil
-                if identifier == "OPEN_IDENTIFIER" {
-                    ReminderDetailViewController.showNote(note!)
-                } else if identifier == "OK_IDENTIFIER" {
-                    // Not much to do...
+            
+            var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+            var request = NSFetchRequest(entityName: "Note")
+            var notes = context?.executeFetchRequest(request, error: nil)! as [Note]
+            for note:Note in notes {
+                if note.key == noteKey! {
+                    note.date = nil
+                    if identifier == "OPEN_IDENTIFIER" {
+                        ReminderDetailViewController.showNote(note)
+                    }
                 }
-            } else {
-                ReminderListViewController()
             }
+            
+            //ReminderListViewController()
+            
         }
         completionHandler()
     }
     
     func application(application: UIApplication!, didReceiveLocalNotification notification: UILocalNotification!) {
-        //application.applicationIconBadgeNumber = 0
+        application.applicationIconBadgeNumber = 0
     }
 
     func applicationWillResignActive(application: UIApplication) {

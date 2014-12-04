@@ -11,20 +11,28 @@ import UIKit
 
 class NotificationManager {
     
+    var dateFormatter = NSDateFormatter()
+    
     func handleNotification(note: Note) {
-        if note.notification != nil {
-            cancelNotification(note)
-        }
-        
+        cancelAnyExistingNotification(note)
         if note.date != nil {
             scheduleNotification(note)
         }
     }
     
-    func cancelNotification(note: Note) {
-        log.debug("Cancelling notification " + note.notification!.description)
-        UIApplication.sharedApplication().cancelLocalNotification(note.notification!)
-        note.notification = nil
+    func notificationForNoteExist(note: Note) {
+        
+    }
+    
+    func cancelAnyExistingNotification(note: Note) {
+        for n:AnyObject in UIApplication.sharedApplication().scheduledLocalNotifications {
+            var notification = n as UILocalNotification
+            let noteKey = notification.userInfo!["key"] as? NSString
+            if note.key == noteKey! {
+                UIApplication.sharedApplication().cancelLocalNotification(notification)
+                log.debug("Cancelling notification for note " + note.text)
+            }
+        }
     }
     
     func scheduleNotification(note: Note) {       
@@ -32,12 +40,11 @@ class NotificationManager {
         localNotification.category = "NOTE_CATEGORY";
         localNotification.alertBody = note.text
         localNotification.fireDate = note.date
-        localNotification.userInfo = ["key":note.key!]
+        localNotification.userInfo = ["key":note.key]
         localNotification.soundName = UILocalNotificationDefaultSoundName
         localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1;
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        note.notification = localNotification
-        log.debug("Scheduling notification " + note.notification!.description)
+        log.debug("Scheduling notification for note " + note.text + " at " + dateFormatter.stringFromDate(note.date!))
     }
     
 }

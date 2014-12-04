@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import XCGLogger
+import CoreData
 
 class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
@@ -62,19 +63,29 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     }
     
     @IBAction func onSave(sender: AnyObject) {
+        var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
         if note == nil {
-            var newNote = Note(text: textView.text)
-            newNote.createdDate = NSDate()
-            newNote.lastUpdatedDate = NSDate()
-            newNote.date = getSelectedDate()
-            self.delegate!.onSave(newNote);
+            var newNote = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: context!) as Note
+            newNote.key = NSUUID().UUIDString
+            newNote.text = textView.text
+            newNote.createddate = NSDate()
+            newNote.lastupdateddate = NSDate()
+            var selectedDate : NSDate? = getSelectedDate()
+            if selectedDate != nil {
+                newNote.date = selectedDate!
+            }
+            note = newNote
         } else {
             note!.text = textView.text
-            note!.date = getSelectedDate()
-            note!.lastUpdatedDate = NSDate()
-            self.delegate!.onSave(note!);
+            var selectedDate : NSDate? = getSelectedDate()
+            if selectedDate != nil {
+                note!.date = selectedDate!
+            }
+            note!.lastupdateddate = NSDate()
         }
         
+        context!.save(nil)
+        self.delegate!.onSave(note!);
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -119,7 +130,11 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     }
     
     func toggleSaveButton() {
-        saveButton.enabled = dateOrTextHasChanges() && dateIsAfterNow()
+        saveButton.enabled = hasText() && dateOrTextHasChanges() && dateIsAfterNow()
+    }
+    
+    func hasText() -> Bool {
+        return !textView.text.isEmpty
     }
     
     func dateOrTextHasChanges() -> Bool {
