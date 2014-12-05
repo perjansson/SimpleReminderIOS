@@ -35,11 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationActionOK.activationMode = UIUserNotificationActivationMode.Background
         
         var notificationActionDelete :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-        notificationActionOK.identifier = "DELETE_IDENTIFIER"
-        notificationActionOK.title = "Delete"
-        notificationActionOK.destructive = true
-        notificationActionOK.authenticationRequired = true
-        notificationActionOK.activationMode = UIUserNotificationActivationMode.Background
+        notificationActionDelete.identifier = "DELETE_IDENTIFIER"
+        notificationActionDelete.title = "Delete"
+        notificationActionDelete.destructive = true
+        notificationActionDelete.authenticationRequired = true
+        notificationActionDelete.activationMode = UIUserNotificationActivationMode.Background
         
         var notificationCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         notificationCategory.identifier = "NOTE_CATEGORY"

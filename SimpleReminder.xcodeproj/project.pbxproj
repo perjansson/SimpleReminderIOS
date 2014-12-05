@@ -232,6 +232,7 @@
 				TargetAttributes = {
 					2E7D5A721A2B5E4A009F762B = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = RC88D2HS3Y;
 					};
 					2E7D5A8A1A2B5E4A009F762B = {
 						CreatedOnToolsVersion = 6.2;
@@ -448,6 +449,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SimpleReminder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -461,6 +463,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SimpleReminder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

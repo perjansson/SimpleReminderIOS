@@ -26,7 +26,17 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
             actionSheetForFirstLogin()
         }
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationBecameActive:", name: UIApplicationDidBecomeActiveNotification, object: nil)
+    }
+    
+    func applicationBecameActive(notification: NSNotification) {
         findAllNotes()
+        self.tableView.reloadData()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        findAllNotes()
+        self.tableView.reloadData()
     }
     
     func actionSheetForFirstLogin() {
@@ -122,8 +132,8 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     
     func onSave(note: Note) {
         self.notificationManager.handleNotification(note)
-        findAllNotes()
-        self.tableView.reloadData()
+        //findAllNotes()
+        //self.tableView.reloadData()
     }
 
 }
