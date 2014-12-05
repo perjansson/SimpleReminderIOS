@@ -145,4 +145,31 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
         return notificationTextView.text.isEmpty || (datePickerView.date.laterDate(NSDate()) == datePickerView.date)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        let info: NSDictionary = notification.userInfo!
+        let value: NSValue = info.valueForKey(UIKeyboardFrameBeginUserInfoKey) as NSValue
+        let keyboardSize: CGSize = value.CGRectValue().size
+        let contentInsets: UIEdgeInsets = UIEdgeInsetsMake(0.0, -5.0, keyboardSize.height, 0.0)
+        textView.contentInset = contentInsets
+        textView.scrollIndicatorInsets = contentInsets
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        let contentInsets: UIEdgeInsets = UIEdgeInsetsZero
+        textView.contentInset = contentInsets
+        textView.scrollIndicatorInsets = contentInsets
+    }
+    
 }
