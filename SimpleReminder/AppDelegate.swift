@@ -16,6 +16,7 @@ let log = XCGLogger.defaultInstance()
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var notificationManager = NotificationManager()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Registering for sending user various kinds of notifications
@@ -33,10 +34,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationActionOK.authenticationRequired = true
         notificationActionOK.activationMode = UIUserNotificationActivationMode.Background
         
+        var notificationActionDelete :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        notificationActionOK.identifier = "DELETE_IDENTIFIER"
+        notificationActionOK.title = "Delete"
+        notificationActionOK.destructive = true
+        notificationActionOK.authenticationRequired = true
+        notificationActionOK.activationMode = UIUserNotificationActivationMode.Background
+        
         var notificationCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         notificationCategory.identifier = "NOTE_CATEGORY"
-        notificationCategory.setActions([notificationActionOpen, notificationActionOK], forContext: UIUserNotificationActionContext.Default)
-        notificationCategory.setActions([notificationActionOpen, notificationActionOK], forContext: UIUserNotificationActionContext.Minimal)
+        notificationCategory.setActions([notificationActionDelete], forContext: UIUserNotificationActionContext.Default)
+        notificationCategory.setActions([notificationActionDelete], forContext: UIUserNotificationActionContext.Minimal)
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: NSSet(array:[notificationCategory])))
                 
@@ -59,6 +67,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     note.date = nil
                     if identifier == "OPEN_IDENTIFIER" {
                         ReminderDetailViewController.showNote(note)
+                    } else if identifier == "DELETE_IDENTIFIER" {
+                        note.isdeleted = true
+                        self.notificationManager.cancelAnyExistingNotification(note)
+                        context!.save(nil)
                     }
                 }
             }
