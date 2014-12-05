@@ -11,6 +11,8 @@ import CoreData
 
 class ReminderListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var testMode = false;
+    
     var notificationManager = NotificationManager()
     var notes: [Note] = []
     var note: Note? = nil
@@ -19,14 +21,37 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
         super.viewDidLoad()        
         initView()        
         
-        let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let firstTimeLoggingIn: Bool? = userDefaults.objectForKey("firstTimeLogin") as? Bool
-        if (firstTimeLoggingIn == nil) {
-            userDefaults.setBool(true, forKey: "firstTimeLogin")
-            actionSheetForFirstLogin()
+        if (testMode) {
+            createTestData()
+        } else {
+            let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            let firstTimeLoggingIn: Bool? = userDefaults.objectForKey("firstTimeLogin") as? Bool
+            if (firstTimeLoggingIn == nil) {
+                userDefaults.setBool(true, forKey: "firstTimeLogin")
+                actionSheetForFirstLogin()
+            }
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationBecameActive:", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationBecameActive:", name: UIApplicationDidBecomeActiveNotification, object: nil)        
+    }
+    
+    func createTestData() {
+        var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+        var newNote1 = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: context!) as Note
+        newNote1.text = "Buy milk"
+        var newNote2 = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: context!) as Note
+        newNote2.text = "Call Mike"
+        var newNote3 = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: context!) as Note
+        newNote3.text = "Update presentation"
+        var newNote4 = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: context!) as Note
+        newNote4.text = "Calculate cost of meeting"
+        var newNote5 = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: context!) as Note
+        newNote5.text = "Paint the bedroom\n\nBuy the following stuff before painting:\n\nPaint (a lot!)\nPaint brusch\nPaint roller\nPaint tray\n\nRemember to use old clothes that can get messy when painting."
+        newNote5.key = "asd"
+        var newNote6 = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: context!) as Note
+        newNote6.text = "Feed the cat"
+        
+        context!.save(nil)
     }
     
     func applicationBecameActive(notification: NSNotification) {
