@@ -98,6 +98,7 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
             var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
             var note = self.notes[indexPath.row]
             note.isdeleted = true
+            self.notificationManager.cancelAnyExistingNotification(note)
             context!.save(nil)
             findAllNotes()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
