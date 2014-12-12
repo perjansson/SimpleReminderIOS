@@ -99,6 +99,7 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
                 self.notes.append(note)
             }
         }
+        self.notes.sort({$0.lastupdateddate.timeIntervalSinceNow > $1.lastupdateddate.timeIntervalSinceNow})
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -157,8 +158,6 @@ class ReminderListViewController: UITableViewController, UITableViewDataSource, 
     
     func onSave(note: Note) {
         self.notificationManager.handleNotification(note)
-        //findAllNotes()
-        //self.tableView.reloadData()
     }
 
 }
