@@ -121,6 +121,9 @@ class ReminderDetailViewController : UIViewController, UITextFieldDelegate, UITe
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
         datePickerView.date = defaultMinimumDate()
+        if note != nil {
+            self.note!.date = nil
+        }
         toggleSaveButton()
         return true
     }
